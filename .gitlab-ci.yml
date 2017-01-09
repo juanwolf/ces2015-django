@@ -9,7 +9,7 @@ release:
     stage: release
     script:
         - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
-        - docker build --pull -t $CONTAINER_TEST_IMAGE -f ./Dockerfile .
+        - docker build --pull -t $CONTAINER_TEST_IMAGE .
         - docker tag $CONTAINER_TEST_IMAGE $CONTAINER_RELEASE_IMAGE
         - docker tag $CONTAINER_TEST_IMAGE $CONTAINER_TAGGED_IMAGE
         - docker push $CONTAINER_RELEASE_IMAGE
